@@ -53,6 +53,7 @@
             //console.log(fieldsArray);
             
             _.forEach(fieldsArray, function(value){
+                console.log(value);
                 //check for reference dot
                 if (!value.includes(".")){ 
                     //just a normal, non-reference field

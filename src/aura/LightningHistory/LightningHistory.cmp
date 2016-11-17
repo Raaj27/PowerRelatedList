@@ -1,4 +1,4 @@
-<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName" access="global" controller="LightningHistoryCtrl">
+<aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName" access="global" controller="LightningHistoryCtrl" >
 	
     <ltng:require scripts="{!$Resource.lodash}" afterScriptsLoaded="{!c.doInit}"/>
     

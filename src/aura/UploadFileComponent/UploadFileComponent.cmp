@@ -1,10 +1,10 @@
 <aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName" access="global" controller="FileController" >
 
 	<!-- design attributes -->
-	<aura:attribute name="recordId" type="Id" />
-	<aura:attribute name="caption" type="String" />
-	<aura:attribute name="fieldAPIName" type="String" />
-	<aura:attribute name="fieldLabel" type="String" />
+	<aura:attribute name="recordId" type="Id" access="global" />
+	<aura:attribute name="caption" type="String"  access="global"/>
+	<aura:attribute name="fieldAPIName" type="String" access="global" />
+	<aura:attribute name="fieldLabel" type="String" access="global" />
 
 
 	<!-- internal attributes -->

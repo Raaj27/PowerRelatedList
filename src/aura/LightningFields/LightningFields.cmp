@@ -1,15 +1,15 @@
-<aura:component controller="Ora">
+<aura:component controller="Ora"  access="global">
     
     <ltng:require scripts="{!$Resource.lodash}" afterScriptsLoaded="{!c.doInit}"/>
     
     <!--public-->
-    <aura:attribute name="record" type="object" required="false"/>
-    <aura:attribute name="displayFields" type="string" required="true" />
-    <aura:attribute name="helpFields" type="string" required="false" description="comma separated list of field API names where you want to display the help text INSTEAD of the Label"/>
-    <aura:attribute name="sObjectType" type="string" required="true" />
-    <aura:attribute name="instantSave" type="boolean" default="true"/>
-    <aura:attribute name="columns" type="integer" default="2"/>
-    <aura:attribute name="allEditable" type="boolean" default="false"/>
+    <aura:attribute name="record" type="object" required="false" access="global"/>
+    <aura:attribute name="displayFields" type="string" required="true"  access="global"/>
+    <aura:attribute name="helpFields" type="string" required="false" description="comma separated list of field API names where you want to display the help text INSTEAD of the Label" access="global"/>
+    <aura:attribute name="sObjectType" type="string" required="true"  access="global"/>
+    <aura:attribute name="instantSave" type="boolean" default="true" access="global"/>
+    <aura:attribute name="columns" type="integer" default="2" access="global"/>
+    <aura:attribute name="allEditable" type="boolean" default="false" access="global"/>
     
     <!--internal-->
     <aura:attribute name="displayFieldsArray" type="object[]" />

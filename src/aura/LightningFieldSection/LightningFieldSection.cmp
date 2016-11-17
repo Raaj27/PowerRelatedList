@@ -1,14 +1,16 @@
 <aura:component implements="flexipage:availableForRecordHome,force:hasRecordId,force:hasSObjectName" access="global" controller="Ora" >
 
-  <aura:attribute name="displayFields" type="string" required="true" />
+  <aura:attribute name="displayFields" type="string" required="true"  access="global"/>
 
-  <aura:attribute name="editableFields" type="string" required="false" default="" />
+  <aura:attribute name="editableFields" type="string" required="false" default=""  access="global"/>
 
-  <aura:attribute name="helpFields" type="string" required="false" description="comma separated list of field API names where you want to display the help text INSTEAD of the Label" default=""/>
-  <aura:attribute name="instantSave" type="boolean" default="true"/>
-  <aura:attribute name="sectionTitle" type="string" default=""/>
-  <aura:attribute name="columns" type="integer" default="2"/>
-  <aura:attribute name="collapsible" type="boolean" default="false"/>
+  <aura:attribute name="helpFields" type="string" required="false" description="comma separated list of field API names where you want to display the help text INSTEAD of the Label" default="" access="global"/>
+  <aura:attribute name="instantSave" type="boolean" default="true" access="global"/>
+  <aura:attribute name="sectionTitle" type="string" default="" access="global"/>
+  <aura:attribute name="columns" type="integer" default="2" access="global"/>
+  <aura:attribute name="collapsible" type="boolean" default="false" access="global"/>
+
+  
   <aura:attribute name="collapsed" type="boolean" default="false"/>
 
   <aura:attribute name="record" type="object" />
