@@ -1,0 +1,12 @@
+<design:component label = "Lightning PowerRelatedList">
+    <design:attribute name="objectName" label="Object name" Description="API Name of the object that you want in the related list (e.g. Contact or Something__c)" />
+    <design:attribute name="lookupField" label="Lookup Field" Description="API Name of the field that looks up to the parent (e.g. AccountID if the related lists is contact, or Parent__c if the related list is a custom object)" />
+    <design:attribute name="displayFields" label="Fields to Show" Description="Comma-separated list of API names of the fields you want to show up on the related list.  Field1, Field2, Field3__c ...  They'll show up in the order given, with the first field being a link to the record detail page"/>
+    <design:attribute name="editableFields" label="Fields that should be editable" Description="Comma-separated list of API names of the fields you want to show up on the related list.  Should be a subset of the Fields to Show"/>
+    <design:attribute name="showFilter" label="Show Filter" Description="Check this box to get a field that lets you filter all the record that contain whatever you type"/>
+
+	<design:attribute name="iconName" label="Icon" Description="the SLDS icon you want to use, formatted as category:icon.  Ex: standard:opportunity or utility:check.  See SLDS for icons and categories"/>
+
+
+    
+</design:component>

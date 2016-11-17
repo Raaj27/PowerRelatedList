@@ -1,0 +1,7 @@
+.THIS .slds-text-heading--small {
+    line-height:2; /*compensates for the input filter option*/
+}
+
+.THIS .slds-input {
+    min-height:0px;
+}

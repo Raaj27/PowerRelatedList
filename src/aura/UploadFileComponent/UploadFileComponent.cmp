@@ -1,0 +1,101 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:hasRecordId,force:hasSObjectName" access="global" controller="FileController" >
+
+	<!-- design attributes -->
+	<aura:attribute name="recordId" type="Id" />
+	<aura:attribute name="caption" type="String" />
+	<aura:attribute name="fieldAPIName" type="String" />
+	<aura:attribute name="fieldLabel" type="String" />
+
+
+	<!-- internal attributes -->
+	<aura:attribute name="fileName" type="String" />
+	<aura:attribute name="fileObject" type="object" />
+
+	<aura:attribute name="uploading" type="boolean" default="true"/>
+	<!-- <aura:attribute name="uploadStatus" type="Boolean" default="false"/> -->
+	<!-- <aura:attribute name="currentValue" type="String" /> -->
+	<!-- <aura:attribute name="submittedBy" type="String" /> -->
+	<!-- <aura:attribute name="submittedOn" type="String" /> -->
+	<!-- <aura:attribute name="downloadURL" type="String" /> -->
+	<!-- <aura:attribute name="previewURL" type="String" /> -->
+	<aura:attribute name="chosenFileName" type="String"/>
+	<!-- <aura:attribute name="contentDocId" type="String" default="" /> -->
+	<!-- <aura:attribute name="contentVersionId" type="String" /> -->
+	<!-- <aura:attribute name="imageSrc"  type="String" /> -->
+	<aura:attribute name="parentId" type="String" default="{!v.recordId}" />
+
+
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+	
+
+	
+	<div class="slds-box slds-box--x-small">
+		
+		<!-- header -->
+		<div class="slds-section-title--divider slds-m-bottom--x-small" >
+			<p class="slds-text-heading--small">{!v.fieldLabel}</p>
+			<p>{!v.caption}</p>
+		</div>
+		
+		
+		<!-- uploading spinner -->
+		<aura:if isTrue="{!v.uploading}">                    
+			<lightning:spinner variant="brand" size="small"/>
+		</aura:if>
+
+		<aura:if isTrue="{!!v.uploading}">
+			<lightning:layout horizontalAlign="spread">
+				<!-- item 1: the file -->
+				<lightning:layoutItem>										
+					<img src="{!v.fileObject.imageSrc}" onclick="{!c.preview}"/> 
+				</lightning:layoutItem>
+				
+				<!-- item 2: the action buttons -->
+				<lightning:layoutItem>
+					
+					<!-- hidden input -->
+					<input type="file" class="file" aura:id="file" onchange="{!c.newFileChosen}" iconName="symbols:upload" />
+					<lightning:buttonGroup>
+
+						<lightning:button label="{!if(v.fileObject.contentDocumentId, 'Replace File', 'Select File')}" onclick="{!c.choose}" />
+
+						<!-- <ui:button label="{!if(v.fileObject.contentDocumentId, 'Replace File', 'Select File')}" press="{!c.choose}" class="saveButton" aura:id="saveButton" />  -->
+
+						<aura:if isTrue="{!v.chosenFileName}">
+							<lightning:button label="Save" onclick="{!c.save}" variant="brand"/> 
+						</aura:if>
+
+						<aura:if isTrue="{!and(!v.chosenFileName, v.fileObject.contentDocumentId)}">
+							<lightning:button label="Preview" onclick="{!c.preview}" /> 
+							<lightning:button label="Download" onclick="{!c.download}" /> 
+						</aura:if>
+					</lightning:buttonGroup>
+					<aura:if isTrue="{!v.chosenFileName}">
+						<div class="slds-text-body--small">Chosen Filename :  {!v.chosenFileName}</div>
+					</aura:if>
+
+				</lightning:layoutItem>
+
+				<!-- item 3: the file metadata -->
+				<lightning:layoutItem>
+					<aura:if isTrue="{!v.fileObject.imageSrc}">
+						<p class="slds-text-body--small">Filename :  {!v.fileObject.title}</p>
+						<p class="slds-text-body--small">Submitted On:  <ui:outputDateTime value="{!v.fileObject.createdDate}" format=""/></p>	
+						<p class="slds-text-body--small">Submitted By :  {!v.fileObject.createdBy}</p>
+					</aura:if>
+				</lightning:layoutItem>
+	                <!--span aura:id="uploading" class="notUploading">
+	                        <img src="{!$Resource.loadingIcon}" alt="uploading" class="small-spinner" /> Uploading...
+	                    </span-->
+
+
+
+	            </lightning:layout>
+	        </aura:if>
+
+	    </div>
+
+
+
+	</aura:component>
