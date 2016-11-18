@@ -6,11 +6,22 @@ private class OraTest {
 		Ora.dynamicTopic('Case', 'Status');
 	}
 
+    @isTest 
+    static void testDynamicTopicBAD(){
+        Ora.dynamicTopic('NoOneWouldEverNameAnObjectThis__c', 'NoOneWouldEverNameAFieldThis__c');
+    }
+
 	@isTest 
 	static void testgetPicklistOptions(){
 		list<case> cases = [select id from Case];
 		Ora.getPicklistOptions(cases[0].id, 'Status', 'Case');
 	}
+
+    @isTest 
+    static void testgetPicklistOptionsNull(){
+        //list<case> cases = [select id from Case];
+        Ora.getPicklistOptions(null, 'Status', 'Case');
+    }
 
 	@isTest 
 	static void testGetCurrentValue(){
@@ -33,6 +44,10 @@ private class OraTest {
 	@isTest static void testQuery() {
 		Ora.query('select id from case');
 	}
+
+    @isTest static void testQueryJSON() {
+        Ora.queryJSON('select id from case');
+    }
 	
 	@isTest static void testDescribe() {
 		Ora.describe('Case');
@@ -51,6 +66,11 @@ private class OraTest {
 		Ora.updateField(cases[0].Id, 'Subject', 'your software REALLY sucks');
 	}
     
+    @isTest static void testUpdateDateTime() {
+        list<Lead> Leads = [select id from Lead];        
+        Ora.updateField(Leads[0].Id, 'EmailBouncedDate', '2016-11-26T23:30:00.000Z');
+    }
+
     @isTest static void testCreate(){        
        	String fields = '{"Name": "TestName"' +
 		                    ',"AccountNumber" : "327823782"' + 
@@ -62,6 +82,20 @@ private class OraTest {
         string result = Ora.create('Account', fields);
         system.debug(result);
     }
+
+    @isTest static void testCreateBad(){        
+        String fields = '{"Name": ""' +
+                            ',"AccountNumber" : "327823782"' + 
+            ',"AnnualRevenue" : 2500' +
+            ',"Rating" : "Hot" ' +
+            ',"Fax" : "5558957842" ' + 
+                            '}';
+        system.debug(fields);
+        string result = Ora.create('Account', fields);
+        system.debug(result);
+    }
+
+
     
     @isTest static void testBadFieldCreate(){        
        	String fields = '{"Name": "TestName"' +

@@ -1,7 +1,7 @@
 public class FileController {
     
     
-     @AuraEnabled
+    @AuraEnabled
     public static String getInitialValue(String pId, String fieldAPIName){
         System.debug('************* in getInitialValue method');
         Id parentId = Id.valueOf(pId);

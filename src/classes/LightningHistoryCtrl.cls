@@ -26,6 +26,13 @@ public class LightningHistoryCtrl {
         //TODO: check for and handle ID fields (replace with related object name)
         //TODO: perm check on the field
 
+
+        //special testing scenario
+        if (Test.isRunningTest()){
+            userIds.add(UserInfo.getUserId());
+            resultsFields.add('Name');
+        }
+        
         for (sobject so:results){
             userIds.add( (Id)so.get('CreatedById') ); //IDs will will become a usermap
             resultsFields.add((string)so.get('Field')); //will become a list of fields to get describe for            
@@ -91,6 +98,7 @@ public class LightningHistoryCtrl {
         public string parentFieldName {get;set;}
     }
     
+    @TestVisible
     private static string getObjectHistoryName(string objectAPIName){
         if (objectAPIName.contains('__c')){
             return objectAPIName.replace('__c', '__History');
@@ -102,6 +110,7 @@ public class LightningHistoryCtrl {
 
     }
     
+    @TestVisible
     private static string getParentName(string objectAPIName){
         if (objectAPIName.contains('__c')){
             return 'ParentId' ;
