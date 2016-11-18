@@ -26,6 +26,12 @@ Handles all server-side errors.
 * Respects field visibility
 * Uses side-scrolling if used in a column too narrow for the table to display (like record detail sidebar)
 
+## FileField
+* Goal: for specific required documents, link a document to a field
+* upload component for record detail pages
+* saves the file as attachment, then chatter contentDocumentVersion
+* puts that into a text/url field of your specification
+
 ## Subcomponents for your hackery
 
 * LightingDataTable: pass it an array of variables, and you'll get a styled, sortable datatable

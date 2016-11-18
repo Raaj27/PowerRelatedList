@@ -1,4 +1,4 @@
-<design:component Label="File Upload">
+<design:component Label="FileField">
  <design:attribute name="parentId" label="Parent Id"  />
     <design:attribute name="fieldAPIName" label="Field API Name"  />
     <design:attribute name="fieldLabel" label="Heading / Document Name" default="(enter heading property)" />
