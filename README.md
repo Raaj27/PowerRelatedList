@@ -1,16 +1,12 @@
-3 record page components in 1 repo !
+4 record page components in 1 repo !
 
 ## PowerRelatedList
 
-Creates a lightning component for displaying related records on a record detail page.
-
-See AppBuilder/Design for the description of the options.
-
-PowerRelatedList2 has been refactored to have a datatable subcomponent.  You pass it an array of records and a few variables, and you get a sortable datatable.
-
-Query/Filtering is implemented at the PowerRelatedList2 level, not on the datatable itself.
-
-Handles all server-side errors.
+* Creates a lightning component for displaying related records on a record detail page.
+* See AppBuilder/Design for the description of the options.
+* PowerRelatedList2 has been refactored to have a datatable subcomponent.  You pass it an array of records and a few variables, and you get a sortable datatable.
+* Query/Filtering is implemented at the PowerRelatedList2 level, not on the datatable itself.
+* Handles all server-side errors.
 
 ## LightningFieldSection
 
