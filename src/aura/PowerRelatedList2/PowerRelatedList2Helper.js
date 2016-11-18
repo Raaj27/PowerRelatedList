@@ -43,7 +43,7 @@
     },
     
     query: function (component, soql){
-        var action = component.get("c.query");
+        var action = component.get("c.queryJSON");
         action.setParams({"soql" : soql});
         action.setCallback(self, function(a){
             //console.log("query results"); 
