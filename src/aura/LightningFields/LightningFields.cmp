@@ -10,6 +10,7 @@
     <aura:attribute name="instantSave" type="boolean" default="true" access="global"/>
     <aura:attribute name="columns" type="integer" default="2" access="global"/>
     <aura:attribute name="allEditable" type="boolean" default="false" access="global"/>
+    <aura:attribute name="pluralLabel" type="string" access="global"/>
     
     <!--internal-->
     <aura:attribute name="displayFieldsArray" type="object[]" />

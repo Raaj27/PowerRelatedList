@@ -10,6 +10,9 @@
     <aura:attribute name="addRecordTypeId" type="string" default="01215000001MWZP" required="false" access="global"/>
     <aura:attribute name="iconName" type="string" access="global"/>
     
+    <!--not design, but shared across components-->
+    <aura:attribute name="pluralLabel" type="string" access="global"/>
+
     <!--internal only attributes-->
     <aura:attribute name="newRecord" type="object"/>
     <aura:attribute name="recordId" type="String" />
@@ -18,7 +21,6 @@
     <aura:attribute name="filter" type="string"/>
     <aura:attribute name="filteredResults" type="object[]"/>
     <aura:attribute name="displayFieldsArray" type="object[]"/>
-    <aura:attribute name="pluralLabel" type="string"/>
     <aura:attribute name="sortState" type="object"/>
     <aura:attribute name="showSpinner" type="boolean" />
 
