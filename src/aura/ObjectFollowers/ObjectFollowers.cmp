@@ -11,7 +11,7 @@
 		</aura:set>
 		<p class="slds-p-horizontal--large slds-p-bottom--large">		
 			<aura:iteration items="{!v.followers}" var="follower" end="{!v.showCount}">
-				<div class="slds-media">
+				<div class="slds-media slds-p-bottom--small">
 					
 					<div class="slds-media__figure">
 						<c:avatar src="{!follower.SmallPhotoUrl}" alt="{!follower.Name}" variant="circle" size="medium"/>
