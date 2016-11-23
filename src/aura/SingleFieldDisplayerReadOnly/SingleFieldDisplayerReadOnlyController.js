@@ -7,11 +7,31 @@
 		var record = component.get("v.record");
 		var output;
 		var parts = fieldDescribe.original.split(".");
-		
+		var id;
 		//console.log(parts);        
 		try {
 			if (fieldDescribe.related){
 				output = record[parts[0]][parts[1]];
+				id = record[parts[0]].Id;
+				//if user
+				if (record[parts[0]].attributes.type==='User'){
+					//console.log("It is a User!: " + parts[0]);
+					helper.getUserPhotoUrl(component, id);
+				}
+				
+				$A.createComponent(
+					"ui:outputURL", 
+					{
+						"value" : '#/sObject/'+id+'/view', 
+						"class" : "slds-truncate",
+						"label" : output//,
+						//"target" : "blank"
+					},
+					function (created, status){
+						helper.addComp(component, created);
+					}
+				);
+				return;
 			} else {
 				output = record[fieldDescribe.describe.name];            
 			} 

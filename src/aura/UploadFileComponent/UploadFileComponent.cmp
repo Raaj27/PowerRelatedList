@@ -40,10 +40,12 @@
 		
 		
 		<!-- uploading spinner -->
-		<aura:if isTrue="{!v.uploading}">                    
-			<lightning:spinner variant="brand" size="small"/>
+		<aura:if isTrue="{!v.uploading}">
+		    <div class="slds-is-relative">
+		        <lightning:spinner variant="brand" size="small"/>
+		    </div>
 		</aura:if>
-
+		
 		<aura:if isTrue="{!!v.uploading}">
 			<lightning:layout horizontalAlign="spread">
 				<!-- item 1: the file -->

@@ -34,9 +34,9 @@
         var action = component.get("c.queryJSON");
         action.setParams({"soql" : soql});
         action.setCallback(self, function(a){
-            //console.log("query results");   
+            console.log("query results");   
             var records = JSON.parse(a.getReturnValue());
-            //console.log(records);
+            console.log(records);
             if (records){
                 component.set("v.record", records[0]);                
             }

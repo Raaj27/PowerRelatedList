@@ -8,12 +8,13 @@
         helper.describe(component, component.get("v.sObjectType"));  
     },
 
-    popTitle : function(component, event, helper){
-    	/*console.log(event.x);
-    	console.log(event.y);
+    popTitle : function(component, event, helper){    	
+        var help = _.filter(event.srcElement.attributes, {'name' : 'data-help'})[0].value;
+        console.log(help);
+        console.log(event.srcElement.id);
 
-    	console.log(event.target;
-    	console.log(event.srcElement;*/
+        //great, now insert the tooltip!
+
     }
     
 })

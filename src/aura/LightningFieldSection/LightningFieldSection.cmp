@@ -25,10 +25,10 @@
     <div class="slds-section slds-is-open">
       <h3 class="slds-section__title">
         <aura:if isTrue="{!!v.collapsed}">
-          <lightning:button class="slds-section__title-action" iconName="utility:chevrondown" label="{!v.sectionTitle}" onclick="{!c.toggleOpen}"/>
+          <lightning:button class="slds-section__title-action" iconName="utility:chevrondown" label="{!v.sectionTitle}" onclick="{!c.toggleOpen}" variant="base"/>
         </aura:if>
         <aura:if isTrue="{!v.collapsed}">
-          <lightning:button class="slds-section__title-action" iconName="utility:chevronright" label="{!v.sectionTitle}" onclick="{!c.toggleOpen}"/>
+          <lightning:button class="slds-section__title-action" iconName="utility:chevronright" label="{!v.sectionTitle}" onclick="{!c.toggleOpen}" variant="base"/>
         </aura:if>
       </h3>
     </div>

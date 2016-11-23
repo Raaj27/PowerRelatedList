@@ -50,8 +50,10 @@
 		    </table>
 		</div>
 	    <aura:if isTrue="{!v.showSpinner}">
-	        <lightning:spinner/>
-	    </aura:if>
+		    <div class="slds-is-relative">
+		        <lightning:spinner/>
+		    </div>
+		</aura:if>
 	</lightning:card>
 
 </aura:component>

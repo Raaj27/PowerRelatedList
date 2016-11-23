@@ -53,7 +53,7 @@
             //console.log(fieldsArray);
             
             _.forEach(fieldsArray, function(value){
-                console.log(value);
+                //console.log(value);
                 //check for reference dot
                 if (!value.includes(".")){ 
                     //just a normal, non-reference field
@@ -95,12 +95,13 @@
                     //console.log("object is" + relationshipFieldObject);
                     //what is the name of that thing, anyway?
                     var relationshipFieldObjectType = _.find(output.fields, {"name" : relationshipFieldObject}).referenceTo[0];
-                    // console.log("found field:");
-                    // console.log(_.find(output.fields, {"name" : relationshipFieldObject}));
-                    // console.log("object type is" + relationshipFieldObjectType);
- 
+                    //console.log("found field:");
+                    //console.log(_.find(output.fields, {"name" : relationshipFieldObject}));
+                    //console.log("object type is" + relationshipFieldObjectType);
+                        
                     getParentDescribe.setParams({"objtype" : relationshipFieldObjectType});
                     var temp = {};
+                    getParentDescribe.setStorable();
                     getParentDescribe.setCallback(this, function (response){
                         displayFieldsArray = component.get("v.displayFieldsArray");
                         //console.log(response)                        
@@ -110,6 +111,7 @@
                         //console.log("searched name is: " + value.split(".")[1])
                         temp = {"describe" : _.find(relatedOutput.fields, {"name" : value.split(".")[1]}) }
                         //set the proper label
+
                         temp.describe.label = _.find(output.fields, {"name" : relationshipFieldObject}).label;
                         // console.log("finding describe in original.  New is:")
                         // console.log(temp);

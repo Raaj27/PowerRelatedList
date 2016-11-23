@@ -39,11 +39,11 @@
                         <!-- todo:size of based display fields array length -->
                         <td class="{!'slds-size--1-of-' + v.displayFieldsArray.length}" data-label="{!field.describe.label}">
                             <!--can read, can't edit-->
-                            <aura:if isTrue="{!and(field.describe.userCanRead, !field.editable)}">
+                            <aura:if isTrue="{!and(field.describe.userCanRead, or(!field.editable, field.related))}">
                                 <c:SingleFieldDisplayerReadOnly record="{!record}" fieldDescribe="{!field}"/>
                             </aura:if>
                             <!--full read-write-->
-                            <aura:if isTrue="{!and(field.describe.userCanRead, field.editable)}">
+                            <aura:if isTrue="{!and(field.describe.userCanRead, field.editable, !field.related)}">
                                 <c:SingleFieldDisplayer record="{!record}" fieldDescribe="{!field}"/>
                             </aura:if>
                         </td>

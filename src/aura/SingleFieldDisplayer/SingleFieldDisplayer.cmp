@@ -11,7 +11,10 @@
     <aura:registerEvent name="handleCallbackError" type="c:handleCallbackError"/>
 
     <!--no access? show NOTHING!-->
-    <aura:if isTrue="{!v.fieldDescribe.describe.userCanRead}">        
+    <aura:if isTrue="{!v.fieldDescribe.describe.userCanRead}">   
+
+
+             
         <!-- types=string, phone -->
         <aura:if isTrue="{!v.fieldDescribe.describe.type == 'string' || v.fieldDescribe.describe.type == 'phone'}">
             <aura:if isTrue="{!and(v.fieldDescribe.describe.userCanEdit, v.fieldDescribe.editable)}">                          

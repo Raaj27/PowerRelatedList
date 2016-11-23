@@ -74,6 +74,8 @@
         <!-- <div class="slds-card__footer"><a href="javascript:void(0);">View All <span class="slds-assistive-text">entity type</span></a></div> -->
     </aura:if>
     <aura:if isTrue="{!v.showSpinner}">
-        <lightning:spinner/>
+        <div class="slds-is-relative">
+            <lightning:spinner/>
+        </div>
     </aura:if>
 </aura:component>

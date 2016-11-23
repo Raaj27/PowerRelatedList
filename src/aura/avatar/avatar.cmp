@@ -1,0 +1,18 @@
+<aura:component >
+
+	<!-- inputs -->
+	<aura:attribute name="src" type="string" access="global"/>
+	<aura:attribute name="alt" type="string" access="global" default="user image"/>
+	<aura:attribute name="size" type="string" access="global" default="small"/>
+	<aura:attribute name="variant" type="string" access="global"/>
+	
+	<aura:attribute name="finalClass" type="string"/>
+
+	
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+	
+	<span class="{!v.finalClass}">
+	  <img src="{!v.src}" alt="{!v.alt}" />
+	</span>
+
+</aura:component>
