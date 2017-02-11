@@ -2,19 +2,19 @@
 
 	reload : function(component) {
 		//get the sobjectType
-		var action = component.get("c.getSharings");
+		let action = component.get("c.getSharings");
 		action.setParams({
 			"recordId" : component.get("v.recordId")
 		});
 
 		action.setCallback(this, function(a){
-			var state = a.getState();
+			let state = a.getState();
 			if (state === "SUCCESS") {
 				console.log(a);
 				//lodash group by kinds
 				component.set("v.shares", JSON.parse(a.getReturnValue()));
 			}  else if (state === "ERROR") {
-				var appEvent = $A.get("e.c:handleCallbackError");
+				let appEvent = $A.get("e.c:handleCallbackError");
 				appEvent.setParams({
 					"errors" : a.getError()
 				});
