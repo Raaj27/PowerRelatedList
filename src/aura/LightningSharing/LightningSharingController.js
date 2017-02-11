@@ -58,10 +58,32 @@
 
 	search : function(component){
 		let searchString = component.find("search").get("v.value");
+		if (searchString.length<=2){
+			component.set("v.results", []);
+			return; //too short to search
+		}
 		let searchObject = component.find("searchPicklist").get("v.value");
 		console.log(searchString);
 		console.log(searchObject);
-		let action = component.get("c.query");
+		let action= component.get("c.doSOSL");
+		action.setParams({"sosl" : "FIND '*"+searchString+"*' IN NAME FIELDS RETURNING " + searchObject + ' (Id, Name)'});
+
+		action.setCallback(this, function(a){
+			let state = a.getState();
+			if (state === "SUCCESS") {
+				console.log(a.getReturnValue());
+				component.set("v.results", a.getReturnValue());
+			}  else if (state === "ERROR") {
+				let appEvent = $A.get("e.c:handleCallbackError");
+				appEvent.setParams({
+					"errors" : a.getError()
+				});
+				appEvent.fire();
+			}
+		});
+		$A.enqueueAction(action);
+
+		/*let action = component.get("c.query");
 		action.setParams({
 			"soql" : "select name, id from " + searchObject + " where name like '%"+searchString+"%'"
 		});
@@ -80,5 +102,6 @@
 			}
 		});
 		$A.enqueueAction(action);
+		*/
 	}
 })
