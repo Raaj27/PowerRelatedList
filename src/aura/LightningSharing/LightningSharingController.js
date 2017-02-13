@@ -33,16 +33,25 @@
 		$A.enqueueAction(action);
 	},
 
+	//not using msp anymore.  Bye, lodash!
+	/*
 	recordSelected : function(component){
 		let selectedRecord = component.find("msp").get("v.value");
 		console.log(selectedRecord);
 		//loop the results and put the match's name in the box
 		let results = component.get("v.results");
 		console.log(results);
-		let match = _.find(results, {"Id" : selectedRecord});
-		console.log(match);
-		component.set("v.searchString", match.Name);
-	},
+		for (let result of results){
+			if (result.Id === selectedRecord){
+				component.set("v.searchString", result.Name);
+				break;
+			}
+		}
+		//remove lodash for speed reasons
+		//let match = _.find(results, {"Id" : selectedRecord});
+		//console.log(match);
+		//component.set("v.searchString", match.Name);
+	},*/
 
 	setRead : function(component, event, helper) {
 		console.log("read clicked");

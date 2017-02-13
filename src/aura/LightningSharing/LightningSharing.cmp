@@ -5,12 +5,9 @@ TODO: navigate to record if clicking on user/group from existing
 
 <aura:component controller="LightningSharing">
 
-	<ltng:require scripts="{!$Resource.lodash}" afterScriptsLoaded="{!c.doInit}"/>
-
 	<aura:attribute name="shares" type="object[]" />
 	<aura:attribute name="sObjectName" type="String" />
 	<aura:attribute name="recordId" type="String" />
-
 
 	<aura:attribute name="searchObject" type="String" default="group"/>
 	<aura:attribute name="searchString" type="String" />
@@ -20,6 +17,7 @@ TODO: navigate to record if clicking on user/group from existing
 	<aura:attribute name="results" type="object[]" />
 	<aura:attribute name="perm" type="string" default="Read/Write"/>
 
+	<aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
 	<aura:registerEvent name="handleCallbackError" type="c:handleCallbackError"/>
 	<c:LightningErrorHandler />
 	<aura:handler event="c:handleCallbackError" action="{!c.stopProp}" phase="bubble"  />
