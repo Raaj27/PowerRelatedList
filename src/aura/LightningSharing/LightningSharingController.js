@@ -66,7 +66,10 @@
 		console.log(searchString);
 		console.log(searchObject);
 		let action= component.get("c.doSOSL");
-		action.setParams({"sosl" : "FIND '*"+searchString+"*' IN NAME FIELDS RETURNING " + searchObject + ' (Id, Name)'});
+		action.setParams({
+			"searchString" : searchString,
+			"objectType" : searchObject
+		});
 
 		action.setCallback(this, function(a){
 			let state = a.getState();
@@ -83,6 +86,7 @@
 		});
 		$A.enqueueAction(action);
 
+		//old soql version.  switched to sosl for performance in large data sets.
 		/*let action = component.get("c.query");
 		action.setParams({
 			"soql" : "select name, id from " + searchObject + " where name like '%"+searchString+"%'"

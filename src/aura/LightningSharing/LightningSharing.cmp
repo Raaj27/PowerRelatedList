@@ -99,7 +99,7 @@ TODO: navigate to record if clicking on user/group from existing
 					</lightning:layoutItem>
 
 					<lightning:layoutItem padding="around-small" flexibility="grow">
-						<lightning:input aura:id="search" name="for" value="{!v.searchString}" label="For" type="search" onchange="{!c.search}"/>
+						<lightning:input aura:id="search" name="for" value="{!v.searchString}" label="For" type="search" onchange="{!c.search}" placeholder="type at least 3 characters to see results"/>
 					</lightning:layoutItem>
 				</lightning:layout>
 

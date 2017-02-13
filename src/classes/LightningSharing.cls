@@ -38,6 +38,9 @@ global with sharing class LightningSharing {
 
 	@AuraEnabled
 	global static string upsertPerm (id UserOrGroupID, id recordId, string level){
+
+		level = String.escapeSingleQuotes(level);
+
 		if (!canIEditPerms(recordId)){
 			throw new SharingPermsException('Only the record owner or administers can modify permissions');
 		}
@@ -79,6 +82,8 @@ global with sharing class LightningSharing {
 		return null;
 	}
 
+	//not usable because security review hates soql-injection
+	/*
 	@AuraEnabled
 	global static list<SObject> query(String soql) {
 		return Database.query(soql);
@@ -92,7 +97,24 @@ global with sharing class LightningSharing {
 			output.addAll(result);
 		}
 		return output;
+	}*/
+
+	@AuraEnabled
+	global static list<SObject> doSOSL(String searchString, string objectType){
+		//Bobby Tables says always sanitize your inputs.
+		searchString = String.escapeSingleQuotes(searchString);
+		objectType = String.escapeSingleQuotes(objectType);
+
+		string sosl = 'FIND \'*' + searchString + '*\' IN NAME FIELDS RETURNING ' + objectType + '(Id, Name)';
+		list<list<sobject>> results = search.query(sosl);
+
+		list<sobject> output = new list<sobject>();
+		for (list<sobject> result:results){
+			output.addAll(result);
+		}
+		return output;
 	}
+
 
 
 	@AuraEnabled
