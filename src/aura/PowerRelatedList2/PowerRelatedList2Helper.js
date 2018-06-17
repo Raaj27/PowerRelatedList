@@ -68,7 +68,7 @@
             var goodStuff = _.filter(component.get("v.results"), function(record){
                 var contains = false;
                 _.forEach(record, function (value){
-                    contains = contains || _.includes(_.toString(value), filter);
+                    contains = contains || _.includes(_.toString(value).toLowerCase(), filter.toLowerCase());
                 });
                 return contains;
             });
